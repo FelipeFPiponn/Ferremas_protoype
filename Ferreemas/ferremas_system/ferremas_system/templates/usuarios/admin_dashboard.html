@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel Administrador{% endblock %}
+
+{% block content %}
+  <h2>Panel de Administrador</h2>
+  <p>Hola {{ user.username }}, desde aquí puedes controlar todo el sistema.</p>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card border-danger mb-3">
+        <div class="card-header">Usuarios</div>
+        <div class="card-body">
+          <p class="card-text">Crear, editar y desactivar cuentas de usuarios.</p>
+          <a href="#" class="btn btn-danger">Gestionar usuarios</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-warning mb-3">
+        <div class="card-header">Productos</div>
+        <div class="card-body">
+          <p class="card-text">Administrar catálogo de productos.</p>
+          <a href="#" class="btn btn-warning">Ver productos</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-info mb-3">
+        <div class="card-header">Reportes</div>
+        <div class="card-body">
+          <p class="card-text">Visualizar reportes financieros y logísticos.</p>
+          <a href="#" class="btn btn-info">Ver reportes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

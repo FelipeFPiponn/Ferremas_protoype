@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Catálogo de Productos{% endblock %}
+
+{% block content %}
+  <h2>Bienvenido, {{ user.username }}</h2>
+  <p>Explora nuestro catálogo de productos:</p>
+
+  <div class="row">
+    <!-- Producto 1 -->
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Martillo" class="card-img-top" alt="Martillo"> "ACEURDATE DE CAMBIAR LAS IMAGENEEEEES"
+        <div class="card-body">
+          <h5 class="card-title">Martillo</h5>
+          <p class="card-text">Martillo de acero forjado. Ideal para trabajos pesados.</p>
+          <p><strong>$4.990</strong></p>
+          <a href="#" class="btn btn-primary">Agregar al carrito</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Taladro" class="card-img-top" alt="Taladro"> "ACEURDATE DE CAMBIAR LAS IMAGENEEEEES"
+        <div class="card-body">
+          <h5 class="card-title">Taladro Eléctrico</h5>
+          <p class="card-text">Taladro portátil con múltiples velocidades y reversa.</p>
+          <p><strong>$29.990</strong></p>
+          <a href="#" class="btn btn-primary">Agregar al carrito</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Pintura" class="card-img-top" alt="Pintura"> "ACEURDATE DE CAMBIAR LAS IMAGENEEEEES"
+        <div class="card-body">
+          <h5 class="card-title">Pintura Latex Blanca</h5>
+          <p class="card-text">Pintura de excelente cobertura para muros interiores.</p>
+          <p><strong>$12.490</strong></p>
+          <a href="#" class="btn btn-primary">Agregar al carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

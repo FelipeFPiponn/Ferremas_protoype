@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel Vendedor{% endblock %}
+
+{% block content %}
+  <h2>Panel de Vendedor</h2>
+  <p>Bienvenido, {{ user.username }}. Aquí puedes gestionar pedidos, aprobar solicitudes y ver reportes.</p>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card border-primary mb-3">
+        <div class="card-header">Solicitudes</div>
+        <div class="card-body">
+          <p class="card-text">Ver y aprobar nuevas solicitudes de materiales.</p>
+          <a href="#" class="btn btn-primary">Ver solicitudes</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-success mb-3">
+        <div class="card-header">Reportes</div>
+        <div class="card-body">
+          <p class="card-text">Generar reportes por faena, maestro o producto.</p>
+          <a href="#" class="btn btn-success">Generar reportes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
