@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}Ferreemas - Tu Ferretería Online{% endblock %}
+
+{% block content %}
+<div class="container"> <!-- principal -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card bg-dark text-white">
+                <img src="https://via.placeholder.com/1200x400" class="card-img" alt="Banner Ferreemas">
+                <div class="card-img-overlay d-flex flex-column justify-content-center">
+                    <h1 class="card-title display-4">Ferreemas</h1>
+                    <p class="card-text lead">Tu ferretería de confianza con los mejores productos y precios.</p>
+                    <a href="#" class="btn btn-primary btn-lg mt-3" style="width: fit-content;">
+                        Ver catálogo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Productos destacados</h2> <!-- destacados -->
+        </div>
+        
+        {% for producto in productos_destacados %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                {% else %}
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Imagen no disponible">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ producto.nombre }}</h5>
+                    <p class="card-text">{{ producto.descripcion|truncatechars:100 }}</p>
+                    <p class="card-text"><strong>${{ producto.precio }}</strong></p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="#" class="btn btn-primary">Ver detalles</a>
+                    <a href="#" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Agregar
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                No hay productos destacados disponibles en este momento.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Nuestras categorías</h2> <!-- categorias -->
+        </div>
+        
+        {% for categoria in categorias %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">{{ categoria.nombre }}</h3>
+                    <p class="card-text">{{ categoria.descripcion|default:"Explora nuestra selección de productos en esta categoría."|truncatechars:100 }}</p>
+                    <a href="#" class="btn btn-outline-primary">
+                        Ver productos
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                No hay categorías disponibles en este momento.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Sección de ventajas -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">¿Por qué elegirnos?</h2>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="bi bi-truck display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Envío rápido</h4>
+                    <p class="card-text">Entregamos tus productos en tiempo récord para que puedas comenzar tus proyectos sin demora.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="bi bi-shield-check display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Calidad garantizada</h4>
+                    <p class="card-text">Todos nuestros productos son seleccionados cuidadosamente para asegurar la mejor calidad.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="bi bi-headset display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Atención al cliente</h4>
+                    <p class="card-text">Nuestro equipo está disponible para ayudarte con cualquier duda o problema que puedas tener.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
