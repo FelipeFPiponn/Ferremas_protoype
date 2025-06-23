@@ -1,0 +1,135 @@
+/* Estilos generales del contenedor del catálogo */
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Estilos para la card de categorías */
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    padding: 10px 15px;
+}
+
+.card-header h5 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.list-group-item {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef;
+}
+
+/* Estilos para la grid de productos */
+.row {
+    margin-bottom: 20px;
+}
+
+/* Estilos para la card de producto */
+.col .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.col .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la imagen del producto */
+.card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+/* Estilos para el cuerpo de la card del producto */
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+}
+
+.text-primary {
+    color: #007bff !important;
+}
+
+/* Estilos para el footer de la card del producto */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid #eee;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos para los botones */
+.btn-primary,
+.btn-success {
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #1e7e34;
+    border-color: #1e7e34;
+}
+
+/* Estilos para los filtros */
+.form-control, .form-select {
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+/* Estilos para las alertas */
+.alert {
+    border-radius: 5px;
+    margin-bottom: 20px;
+}

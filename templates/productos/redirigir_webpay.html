@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Redirigiendo a Webpay{% endblock %}
+{% block content %}
+<div class="container mt-5 text-center">
+    <h2>Redirigiendo a Webpay...</h2>
+    <p>Si no eres redirigido automáticamente, haz clic en el botón de abajo.</p>
+    <p><strong>URL:</strong> {{ url }}</p>
+    <p><strong>Token:</strong> {{ token }}</p>
+    <form id="webpay-form" action="{{ url }}" method="POST">
+        <input type="hidden" name="token_ws" value="{{ token }}">
+        <button type="submit" class="btn btn-success">Ir a Webpay</button>
+    </form>
+</div>
+<script>
+    console.log("Formulario de redirección a Webpay cargado");
+    console.log("URL: {{ url }}");
+    console.log("Token: {{ token }}");
+    
+    // Esperar un momento antes de enviar el formulario
+    setTimeout(function() {
+        console.log("Enviando formulario...");
+        document.getElementById('webpay-form').submit();
+    }, 2000);
+</script>
+{% endblock %}

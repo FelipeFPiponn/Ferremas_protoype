@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Mi Perfil{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-header text-white" style="background-color: #FFA726;">
+                    <h4 class="mb-0 text-center">Mi Perfil</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4 text-center">
+                        <i class="bi bi-person-circle" style="font-size: 4rem; color: #FFA726;"></i>
+                    </div>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item"><strong>Usuario:</strong> {{ user.username }}</li>
+                        <li class="list-group-item"><strong>Nombre:</strong> {{ user.first_name }} {{ user.last_name }}
+                        </li>
+                        <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+                    </ul>
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'pedidos' %}" class="btn btn-outline-primary">Ver mis pedidos</a>
+                        <a href="{% url 'logout' %}" class="btn btn-outline-danger">Cerrar sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,153 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    font-size: 1.08rem;
+    letter-spacing: 0.01em;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Estilos de navegación */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(90deg, #212529 80%, #ffc107 100%);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important;
+}
+
+.nav-link.active {
+    color: #ffc107 !important;
+}
+
+/* Estilos del footer */
+footer {
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer h5 {
+    font-weight: 600;
+    color: #ffc107;
+}
+
+footer .social-icons a {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #ffc107 !important;
+}
+
+footer a {
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffc107 !important;
+}
+
+/* Estilos para tarjetas y botones */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn, .btn-primary, .btn-success {
+    font-size: 1.08rem;
+    border-radius: 7px;
+    padding: 10px 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    footer {
+        text-align: center;
+    }
+}
+
+/* Mejoras UI/UX anti-estrés */
+.alert {
+    animation: fadeInDown 0.7s;
+    font-size: 1.05rem;
+    border-radius: 7px;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Spinner de carga */
+.spinner {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 4px solid #ffc107;
+    border-top: 4px solid #212529;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mensajes motivadores */
+.mensaje-motivador {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    border-radius: 7px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.13rem;
+    box-shadow: 0 2px 8px rgba(255,193,7,0.08);
+    animation: fadeInDown 0.7s;
+}

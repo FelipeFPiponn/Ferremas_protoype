@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Resumen de Compra{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Resumen de Compra</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.producto.nombre }}</td>
+                <td>${{ item.producto.precio }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>${{ item.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-end">
+        <h4>Total a pagar: <span class="text-success">${{ total }}</span></h4>
+        <form action="{% url 'crear_transaccion' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success btn-lg">Pagar con Transbank</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

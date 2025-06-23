@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Pago Fallido{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-danger">
+        <h2>Pago no realizado</h2>
+        <p>Hubo un problema al procesar tu pago. Por favor, intenta nuevamente o contacta a soporte.</p>
+        <a href="/productos/carrito/checkout/" class="btn btn-warning mt-3">Volver al checkout</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Pago Confirmado - Ferreemas{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0"><i class="bi bi-check-circle-fill me-2"></i>¡Pago realizado con éxito!</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-success">
+                        <h5>Tu pedido ha sido confirmado</h5>
+                        <p>Número de orden: <strong>#{{ orden.id }}</strong></p>
+                        <p>Código de autorización: <strong>{{ transaccion.codigo_autorizacion }}</strong></p>
+                        <p>Fecha: <strong>{{ orden.fecha_creacion|date:"d/m/Y H:i" }}</strong></p>
+                        <p>Estado: <strong class="badge bg-success">{{ orden.estado|title }}</strong></p>
+                    </div>
+                    
+                    <h5 class="mt-4">Detalles del pedido:</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in orden.carrito.items.all %}
+                                <tr>
+                                    <td>{{ item.producto.nombre }}</td>
+                                    <td>{{ item.cantidad }}</td>
+                                    <td>${{ item.producto.precio }}</td>
+                                    <td>${{ item.subtotal }}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr class="table-success">
+                                    <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                    <td><strong>${{ orden.total }}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Información de envío:</h5>
+                        <p><strong>Dirección:</strong> {{ orden.direccion_envio }}</p>
+                    </div>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="bi bi-info-circle-fill me-2"></i> Recibirás un correo electrónico con los detalles de tu compra. Guarda esta información para futuras referencias.
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'historial_ordenes' %}" class="btn btn-outline-primary">
+                            <i class="bi bi-clock-history me-1"></i> Ver mis pedidos
+                        </a>
+                        <a href="{% url 'catalogo' %}" class="btn btn-success">
+                            <i class="bi bi-shop me-1"></i> Seguir comprando
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block title %}Catálogo de Productos - Ferreemas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Catálogo de Productos</h1>
+    
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Categorías</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{% url 'catalogo' %}" class="list-group-item list-group-item-action">Todas</a>
+                    
+                    <!-- Herramientas Manuales -->
+                    <div class="list-group-item p-0">
+                        <button class="btn btn-link text-start w-100 text-decoration-none text-dark p-3" type="button" data-bs-toggle="collapse" data-bs-target="#herramientasManuales" aria-expanded="false" aria-controls="herramientasManuales">
+                            <i class="bi bi-wrench me-2"></i>Herramientas Manuales
+                            <i class="bi bi-chevron-down float-end"></i>
+                        </button>
+                        <div class="collapse" id="herramientasManuales">
+                            <div class="list-group list-group-flush">
+                                <a href="{% url 'catalogo' %}?subcategoria=martillos" class="list-group-item list-group-item-action ps-5">Martillos</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=destornilladores" class="list-group-item list-group-item-action ps-5">Destornilladores</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=llaves" class="list-group-item list-group-item-action ps-5">Llaves</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Herramientas Eléctricas" class="list-group-item list-group-item-action ps-5">Herramientas Eléctricas</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Taladros" class="list-group-item list-group-item-action ps-5">Taladros</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Sierras" class="list-group-item list-group-item-action ps-5">Sierras</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Lijadoras" class="list-group-item list-group-item-action ps-5">Lijadoras</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Materiales de Construcción" class="list-group-item list-group-item-action ps-5">Materiales de Construcción</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Materiales Básicos -->
+                    <div class="list-group-item p-0">
+                        <button class="btn btn-link text-start w-100 text-decoration-none text-dark p-3" type="button" data-bs-toggle="collapse" data-bs-target="#materialesBasicos" aria-expanded="false" aria-controls="materialesBasicos">
+                            <i class="bi bi-bricks me-2"></i>Materiales Básicos
+                            <i class="bi bi-chevron-down float-end"></i>
+                        </button>
+                        <div class="collapse" id="materialesBasicos">
+                            <div class="list-group list-group-flush">
+                                <a href="{% url 'catalogo' %}?subcategoria=Cemento" class="list-group-item list-group-item-action ps-5">Cemento</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Arena" class="list-group-item list-group-item-action ps-5">Arena</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Ladrillos" class="list-group-item list-group-item-action ps-5">Ladrillos</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Acabados" class="list-group-item list-group-item-action ps-5">Acabados</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Pinturas" class="list-group-item list-group-item-action ps-5">Pinturas</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Barnices" class="list-group-item list-group-item-action ps-5">Barnices</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Cerámicos" class="list-group-item list-group-item-action ps-5">Cerámicos</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Equipos de Seguridad -->
+                    <div class="list-group-item p-0">
+                        <button class="btn btn-link text-start w-100 text-decoration-none text-dark p-3" type="button" data-bs-toggle="collapse" data-bs-target="#equiposdeSeguridad" aria-expanded="false" aria-controls="equiposdeSeguridad">
+                            <i class="bi bi-shield-check me-2"></i>Equipos de Seguridad
+                            <i class="bi bi-chevron-down float-end"></i>
+                        </button>
+                        <div class="collapse" id="equiposdeSeguridad">
+                            <div class="list-group list-group-flush">
+                                <a href="{% url 'catalogo' %}?subcategoria=Casos" class="list-group-item list-group-item-action ps-5">Casos</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Guantes" class="list-group-item list-group-item-action ps-5">Guantes</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Lentes de Seguridad " class="list-group-item list-group-item-action ps-5">Lentes de Seguridad </a>
+                                <a href="{% url 'catalogo' %}?subcategoria=Accesorios Varios" class="list-group-item list-group-item-action ps-5">Accesorios Varios</a>
+                                <a href="{% url 'catalogo' %}?subcategoria=barnices" class="list-group-item list-group-item-action ps-5">Barnices</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- He eliminado la parte que llamaba a las categorías de la base de datos -->
+                </div>
+            </div>
+            
+            <!-- Filtros adicionales si los necesitas -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Filtros</h5>
+                </div>
+                <div class="card-body">
+                    <form method="get" action="{% url 'catalogo' %}">
+                        <!-- Mantener los filtros de subcategoría si están presentes -->
+                        {% if request.GET.subcategoria %}
+                        <input type="hidden" name="subcategoria" value="{{ request.GET.subcategoria }}">
+                        {% endif %}
+                        {% if request.GET.categoria %}
+                        <input type="hidden" name="categoria" value="{{ request.GET.categoria }}">
+                        {% endif %}
+                        
+                        <div class="mb-3">
+                            <label for="precio_min" class="form-label">Precio mínimo</label>
+                            <input type="number" class="form-control" id="precio_min" name="precio_min" value="{{ request.GET.precio_min }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="precio_max" class="form-label">Precio máximo</label>
+                            <input type="number" class="form-control" id="precio_max" name="precio_max" value="{{ request.GET.precio_max }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Aplicar filtros</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <!-- Título de la subcategoría seleccionada -->
+            {% if request.GET.subcategoria %}
+            <div class="alert alert-info mb-4">
+                <h4 class="mb-0">{{ request.GET.subcategoria|title }}</h4>
+            </div>
+            {% endif %}
+            
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for producto in productos %}
+                <div class="col">
+                    <div class="card h-100">
+                        {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                        {% else %}
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Imagen no disponible">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producto.nombre }}</h5>
+                            <p class="card-text text-muted small">
+                                <strong>Código:</strong> {{ producto.codigo|default:"FER-" }}{{ producto.id }}
+                            </p>
+                            <p class="card-text text-muted small">
+                                <strong>Marca:</strong> {{ producto.marca|default:"No especificada" }}
+                            </p>
+                            <p class="card-text">{{ producto.descripcion|truncatechars:80 }}</p>
+                            <p class="card-text">
+                                <strong class="text-primary fs-5">${{ producto.precio }}</strong>
+                                {% if producto.precio_anterior and producto.precio_anterior > producto.precio %}
+                                <span class="text-decoration-line-through text-muted ms-2">${{ producto.precio_anterior }}</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-primary">
+                                <i class="bi bi-eye"></i> Ver detalles
+                            </a>
+                            <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn btn-success">
+                                <i class="bi bi-cart-plus"></i> Agregar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        <p class="mb-0">No hay productos disponibles en esta categoría.</p>
+                        <p class="mb-0 mt-2">Prueba con otra categoría o elimina los filtros aplicados.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

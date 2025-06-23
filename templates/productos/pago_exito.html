@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Pago Exitoso{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-success">
+        <h2 class="mb-4"><i class="bi bi-check-circle-fill me-2"></i>¡Pago realizado con éxito!</h2>
+        <p class="lead">Tu compra ha sido procesada correctamente.</p>
+        
+        {% if orden %}
+        <div class="card my-4">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Detalles de tu pedido</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Número de orden:</strong> #{{ orden.id }}</p>
+                        <p><strong>Fecha:</strong> {{ orden.fecha_creacion|date:"d/m/Y H:i" }}</p>
+                        <p><strong>Estado:</strong> <span class="badge bg-success">{{ orden.estado|title }}</span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Dirección de envío:</strong> {{ orden.direccion_envio }}</p>
+                        {% if transaccion %}
+                        <p><strong>Código de autorización:</strong> {{ transaccion.codigo_autorizacion }}</p>
+                        {% endif %}
+                        <p><strong>Total pagado:</strong> <span class="text-success fw-bold">${{ orden.total }}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="alert alert-info">
+            <i class="bi bi-envelope me-2"></i> Pronto recibirás un correo electrónico con los detalles completos de tu pedido.
+        </div>
+        
+        <div class="mt-4">
+            <p>¿Qué deseas hacer ahora?</p>
+            <div class="d-flex flex-wrap gap-2">
+                {% if orden %}
+                <a href="{% url 'detalle_orden' orden.id %}" class="btn btn-primary">
+                    <i class="bi bi-receipt me-1"></i> Ver detalles del pedido
+                </a>
+                {% endif %}
+                <a href="{% url 'historial_ordenes' %}" class="btn btn-outline-primary">
+                    <i class="bi bi-clock-history me-1"></i> Ver historial de pedidos
+                </a>
+                <a href="{% url 'catalogo' %}" class="btn btn-success">
+                    <i class="bi bi-shop me-1"></i> Seguir comprando
+                </a>
+                <a href="{% url 'home' %}" class="btn btn-outline-secondary">
+                    <i class="bi bi-house me-1"></i> Volver al inicio
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

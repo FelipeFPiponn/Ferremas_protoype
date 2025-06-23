@@ -1,0 +1,17 @@
+asgiref==3.8.1
+certifi==2025.4.26
+charset-normalizer==3.4.2
+Django==5.2.1
+djangorestframework==3.16.0
+idna==3.10
+marshmallow==3.26.1
+packaging==25.0
+pillow==11.2.1
+pyzbar==0.1.9
+requests==2.32.3
+sqlparse==0.5.3
+transbank-sdk==6.0.0
+typing_extensions==4.13.2
+tzdata==2025.2
+urllib3==2.4.0
+uv==0.7.3

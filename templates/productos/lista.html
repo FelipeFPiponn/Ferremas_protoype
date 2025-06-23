@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Catálogo de Productos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Catálogo de Productos</h1>
+    <div class="row">
+        {% for producto in productos %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}"
+                    style="height:200px; object-fit:cover;">
+                {% else %}
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Imagen no disponible">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
+                    <p class="card-text">{{ producto.descripcion|truncatechars:100 }}</p>
+                    <p class="card-text fs-5"><strong class="text-success">${{ producto.precio }}</strong></p>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-white border-0">
+                    <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-outline-primary">Ver detalles</a>
+                    <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn btn-success"><i
+                            class="bi bi-cart-plus"></i> Agregar</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">No hay productos disponibles en este momento.</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

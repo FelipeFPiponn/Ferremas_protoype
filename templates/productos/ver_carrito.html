@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Mi Carrito{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Mi Carrito</h1>
+    {% if items %}
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.producto.nombre }}</td>
+                <td>${{ item.producto.precio }}</td>
+                <td>
+                    <form method="post" action="{% url 'actualizar_carrito' item.id %}">
+                        {% csrf_token %}
+                        <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1"
+                            max="{{ item.producto.stock }}" style="width:60px;">
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Actualizar</button>
+                    </form>
+                </td>
+                <td>${{ item.subtotal }}</td>
+                <td>
+                    <a href="{% url 'eliminar_del_carrito' item.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-end">
+        <h4>Total: <span class="text-success">${{ total }}</span></h4>
+        <a href="{% url 'iniciar_pago' %}" class="btn btn-primary btn-lg">Proceder al pago</a>
+    </div>
+    {% else %}
+    <div class="alert alert-info">Tu carrito está vacío.</div>
+    {% endif %}
+</div>
+{% endblock %}

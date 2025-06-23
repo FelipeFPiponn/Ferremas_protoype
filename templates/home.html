@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Ferreemas - Tu Ferretería Online{% endblock %}
+
+{% block content %}
+<div class="container"> <!-- principal -->
+    <!-- Banner principal -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card bg-dark text-white border-0 shadow-lg">
+                <img src="{% static 'img/banner-fin-6.png' %}" class="card-img" alt="Banner Ferremas"
+                    style="object-fit:cover; height:350px; opacity:0.85;">
+                <div class="card-img-overlay d-flex flex-column justify-content-center align-items-start">
+                    <h1 class="display-3 fw-bold text-warning mb-2" style="text-shadow:2px 2px 8px #333;">Ferreemas</h1>
+                    <p class="lead fs-3 mb-3" style="text-shadow:1px 1px 6px #222;">Tu ferretería de confianza con los
+                        mejores productos y precios.</p>
+                    <a href="{% url 'lista_productos' %}" class="btn btn-warning btn-lg mt-3 shadow">Ver catálogo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Productos destacados -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4 text-primary fw-bold"><i class="bi bi-star-fill text-warning"></i> Productos destacados</h2>
+        </div>
+        {% for producto in productos_destacados %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}"
+                    style="height:200px; object-fit:cover;">
+                {% else %}
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Imagen no disponible">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
+                    <p class="card-text">{{ producto.descripcion|truncatechars:100 }}</p>
+                    <p class="card-text fs-5"><strong class="text-success">${{ producto.precio }}</strong></p>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-white border-0">
+                    <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-outline-primary">Ver detalles</a>
+                    <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn btn-success"><i
+                            class="bi bi-cart-plus"></i> Agregar</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">No hay productos destacados disponibles en este momento.</div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Categorías -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4 text-primary fw-bold"><i class="bi bi-grid-3x3-gap-fill"></i> Nuestras categorías</h2>
+        </div>
+        {% for categoria in categorias %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm bg-light">
+                <div class="card-body text-center">
+                    <h3 class="card-title text-warning fw-bold">{{ categoria.nombre }}</h3>
+                    <p class="card-text">{{ categoria.descripcion|default:"Explora nuestra selección de productos en
+                        esta categoría."|truncatechars:100 }}</p>
+                    <a href="{% url 'productos_por_categoria' categoria.id %}" class="btn btn-outline-primary">Ver
+                        productos</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">No hay categorías disponibles en este momento.</div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Ventajas -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4 text-primary fw-bold"><i class="bi bi-award-fill"></i> ¿Por qué elegirnos?</h2>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="bi bi-truck display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Envío rápido</h4>
+                    <p class="card-text">Entregamos tus productos en tiempo récord para que puedas comenzar tus
+                        proyectos sin demora.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="bi bi-shield-check display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Calidad garantizada</h4>
+                    <p class="card-text">Todos nuestros productos son seleccionados cuidadosamente para asegurar la
+                        mejor calidad.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card text-center h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="bi bi-headset display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Atención al cliente</h4>
+                    <p class="card-text">Nuestro equipo está disponible para ayudarte con cualquier duda o problema que
+                        puedas tener.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Llamado a la acción final -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <div class="p-5 bg-warning rounded shadow-lg">
+                <h2 class="fw-bold mb-3">¿Listo para tus próximos proyectos?</h2>
+                <p class="fs-5">Explora nuestro catálogo y encuentra todo lo que necesitas para tu hogar, taller o
+                    empresa.</p>
+                <a href="{% url 'lista_productos' %}" class="btn btn-primary btn-lg">Ir al catálogo</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
